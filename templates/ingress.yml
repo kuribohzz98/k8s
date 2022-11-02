@@ -2,7 +2,7 @@ apiVersion: networking.k8s.io/v1
 kind: Ingress
 metadata:
   name: nginx-deployment-ingress
-  namespace: kuri-namespace
+  # namespace: kuri-namespace
 spec:
   rules:
   - host: localhost

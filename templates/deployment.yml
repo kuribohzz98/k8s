@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: kuri-test
-  namespace: kuri-namespace
+  # namespace: kuri-namespace
   labels:
     app: kuri-test
 spec:

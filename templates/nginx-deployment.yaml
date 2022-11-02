@@ -2,7 +2,7 @@ apiVersion: apps/v1
 kind: Deployment
 metadata:
   name: nginx-deployment
-  namespace: kuri-namespace
+  # namespace: kuri-namespace
   labels:
     app: nginx
 spec:
