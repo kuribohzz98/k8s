@@ -1,0 +1,30 @@
+$ kubectl create ns kuri-namespace
+-> namespace/kuri-namespace created
+
+$ kubectl apply -f ./nginx-deployment.yaml
+-> deployment.apps/nginx-deployment created
+
+$ kubectl get deployment nginx-deployment -n kuri-namespace
+NAME               READY   UP-TO-DATE   AVAILABLE   AGE
+nginx-deployment   2/2     2            2           2m17s
+
+$ kubectl get pod -n kuri-namespace
+NAME                                READY   STATUS    RESTARTS   AGE
+nginx-deployment-6595874d85-47m2v   1/1     Running   0          47s
+nginx-deployment-6595874d85-lzqmh   1/1     Running   0          33s
+
+$ kubectl expose deployment nginx-deployment -n kuri-namespace --type=NodePort
+-> service/nginx-deployment exposed
+
+$ minikube service nginx-deployment --url -n kuri-namespace
+-> http://127.0.0.1:61198
+❗  Because you are using a Docker driver on windows, the terminal needs to be open to run it.
+
+// k8s login
+
+kubectl create secret docker-registry regcred /
+--docker-server=<your-registry-server> /
+--docker-username=<your-name> /
+--docker-password=<your-pword> /
+--docker-email=<your-email> /
+-n kuri-namespace

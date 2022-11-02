@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: kuri-test
+  namespace: kuri-namespace
+  labels:
+    app: kuri-test
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: kuri-test
+  template:
+    metadata:
+      labels:
+        app: kuri-test
+    spec:
+      containers:
+      - name: kuri-test
+        image: kuribohzz98/k8s:k8s-test
+        ports:
+        - containerPort: 3000
+      imagePullSecrets:
+      - name: regcred
